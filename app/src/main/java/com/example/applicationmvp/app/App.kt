@@ -8,4 +8,16 @@ import com.example.applicationmvp.ui.MainActivity
 
 class App : Application() {
 
+    lateinit var presenter : Presenter
+
+    override fun onCreate() {
+        super.onCreate()
+
+        instance = this
+        presenter = Presenter(Model(), RetrofitImpl())
+    }
+
+    companion object {
+        lateinit var instance: App private set
+    }
 }
